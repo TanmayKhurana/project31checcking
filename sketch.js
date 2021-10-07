@@ -71,7 +71,8 @@ function setup() {
   p10btm = new Plinko(910, 400, 15)
 
   particle = new Particle(random(width/2-10, width/2+10), 10, 10)
-  
+
+}
 
 function draw() {
   background("black");
@@ -129,13 +130,18 @@ function draw() {
   p9btm.display()
   p10btm.display()
 
-  particle.display()
+  if(frameCount%10===0){
+    particles.push(new Particle(random(width/2-10, width/2+10), 10, 10))
+  }
+
+  for (var h = 0;h<particles.length;h++) {
+    particles[h].display()
+  }
+ 
 
   Engine.update(engine);
   drawSprites();
+ 
 }
 
-if(frameCount%10===0){
-  particles.push(new Particle(random(width/2-10, width/2+10), 10, 10))
-}
-}
+ 
